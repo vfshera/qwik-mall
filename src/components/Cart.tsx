@@ -1,6 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 
-export const Cart = component$(() => {
+export default component$(() => {
   return (
     <div class="cart-wrapper">
       <section class="shopping-cart">

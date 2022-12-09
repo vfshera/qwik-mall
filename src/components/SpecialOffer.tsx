@@ -1,6 +1,6 @@
 import { component$, useSignal } from "@builder.io/qwik";
 
-export const SpecialOffer = component$(() => {
+export default component$(() => {
   const isOpen = useSignal(false);
   return (
     <>

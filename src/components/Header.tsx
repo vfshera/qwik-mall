@@ -1,11 +1,9 @@
-import { component$, useStylesScoped$ } from "@builder.io/qwik";
-import { SearchBox } from "../SearchBox";
-import { SpecialOffer } from "../SpecialOffer";
-import styles from "./header.css?inline";
+import { component$ } from "@builder.io/qwik";
+import Cart from "./Cart";
+import SearchBox from "./SearchBox";
+import SpecialOffer from "./SpecialOffer";
 
 export default component$(() => {
-  useStylesScoped$(styles);
-
   return (
     <div class="navbar-wrapper">
       <header>
@@ -16,16 +14,16 @@ export default component$(() => {
       <nav>
         <ul>
           <li>
-            <a href="{{ route('welcome') }}">Home</a>
+            <a href="/">Home</a>
           </li>
           <li>
-            <a href="{{ route('collections.categories') }}">Categories</a>
+            <a href="/">Categories</a>
           </li>
           <li>
-            <a href="{{ route('collections.featured') }}">Featured</a>
+            <a href="/">Featured</a>
           </li>
           <li>
-            <a href="{{ route('about') }}">About Us</a>
+            <a href="/">About Us</a>
           </li>
         </ul>
 
@@ -36,15 +34,15 @@ export default component$(() => {
           {/* @if (Route::has('login')) */}
           <div class="space-x-4 self-end">
             {/* @auth */}
-            <a class="font-bold" href="{{ route('dashboard') }}">
+            {/* <a class="font-bold" href="{{ route('dashboard') }}">
               Username
-            </a>
-            <a
+            </a> */}
+            {/* <a
               href="{{ route('logout') }}"
               class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
             >
               Log out
-            </a>
+            </a> */}
 
             <form
               id="logout-form"
@@ -76,7 +74,7 @@ export default component$(() => {
         </ul>
       </nav>
 
-      {/* <div>// @livewire('shopping-cart')</div> */}
+      <Cart />
     </div>
   );
 });

@@ -1,6 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { Link } from "@builder.io/qwik-city";
+import ProductCard from "~/components/ProductCard";
 
 export const head: DocumentHead = {
   title: "Home - Commerce IT Mall",
@@ -48,11 +49,9 @@ export default component$(() => {
         </div>
 
         <div class="product-list">
-          {/* @foreach($products as $product)
-
-    @livewire('product-tile' ,['product' => $product])
-
-    @endforeach */}
+          {[...new Array(6).fill(undefined)].map((p) => (
+            <ProductCard />
+          ))}
         </div>
       </section>
 

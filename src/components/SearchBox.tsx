@@ -1,9 +1,9 @@
 import { component$ } from "@builder.io/qwik";
 
-export const SearchBox = component$(() => {
+export default component$(() => {
   return (
     <div class="brand-name-search">
-      <a href="{{ route('welcome') }}">E-Comm Store</a>
+      <a href="/">Commerce It Mall</a>
       <form>
         <input type="text" placeholder="Search Items ..." />
 
@@ -11,11 +11,11 @@ export const SearchBox = component$(() => {
           <option value="">All Categories</option>
 
           {/* @foreach($categories as $category) */}
-          <option value="{{ $category->id }}">Category 1</option>
+          <option value=" ">Category 1</option>
           {/* @endforeach */}
         </select>
         <div>
-          <div class="search-results">
+          <div class="search-results hidden">
             {/* @foreach($searchedProducts as $product) */}
             <p>
               <a href=" ">{"{ $product->title }"}</a>

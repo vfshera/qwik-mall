@@ -1,6 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 
-export const Footer = component$(() => {
+export default component$(() => {
   return (
     <footer class="scecomm-container">
       <div class="info">
@@ -37,10 +37,10 @@ export const Footer = component$(() => {
             <a href="#">Contact Us</a>
           </li>
           <li>
-            <a href="{{ route('policy') }}">Privacy Policy</a>
+            <a href="/">Privacy Policy</a>
           </li>
           <li>
-            <a href="{{ route('terms') }}">Terms & Conditions</a>
+            <a href="/">Terms & Conditions</a>
           </li>
         </ul>
       </div>
