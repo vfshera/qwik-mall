@@ -1,9 +1,14 @@
-import { component$ } from "@builder.io/qwik";
+import { $, component$, useSignal } from "@builder.io/qwik";
 import Cart from "./Cart";
 import SearchBox from "./SearchBox";
 import SpecialOffer from "./SpecialOffer";
 
 export default component$(() => {
+  const showCart = useSignal(false);
+
+  const close$ = $(() => {
+    showCart.value = false;
+  });
   return (
     <div class="navbar-wrapper">
       <header>
@@ -28,9 +33,14 @@ export default component$(() => {
         </ul>
 
         <ul>
-          <span class="cart-icon mx-6 cursor-pointer">
-            Cart<i class="ti-bag h-6 ml-1"></i>
-          </span>
+          <button
+            onClick$={() => {
+              showCart.value = !showCart.value;
+            }}
+            class="cart-icon mx-6 cursor-pointer"
+          >
+            Cart
+          </button>
           {/* @if (Route::has('login')) */}
           <div class="space-x-4 self-end">
             {/* @auth */}
@@ -74,7 +84,7 @@ export default component$(() => {
         </ul>
       </nav>
 
-      <Cart />
+      {showCart.value && <Cart onClose$={close$} />}
     </div>
   );
 });
