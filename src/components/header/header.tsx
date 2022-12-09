@@ -1,13 +1,17 @@
 import { component$, useStylesScoped$ } from "@builder.io/qwik";
-import { QwikLogo } from "../icons/qwik";
+import { SearchBox } from "../SearchBox";
+import { SpecialOffer } from "../SpecialOffer";
 import styles from "./header.css?inline";
 
 export default component$(() => {
   useStylesScoped$(styles);
 
   return (
-    <header class="navbar-wrapper">
-      {/* <div>@livewire('special-offer') @livewire('search-box')</div> */}
+    <div class="navbar-wrapper">
+      <header>
+        <SpecialOffer />
+        <SearchBox />
+      </header>
 
       <nav>
         <ul>
@@ -73,6 +77,6 @@ export default component$(() => {
       </nav>
 
       {/* <div>// @livewire('shopping-cart')</div> */}
-    </header>
+    </div>
   );
 });
