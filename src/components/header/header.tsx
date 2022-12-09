@@ -1,34 +1,78 @@
-import { component$, useStylesScoped$ } from '@builder.io/qwik';
-import { QwikLogo } from '../icons/qwik';
-import styles from './header.css?inline';
+import { component$, useStylesScoped$ } from "@builder.io/qwik";
+import { QwikLogo } from "../icons/qwik";
+import styles from "./header.css?inline";
 
 export default component$(() => {
   useStylesScoped$(styles);
 
   return (
-    <header>
-      <div class="logo">
-        <a href="https://qwik.builder.io/" target="_blank">
-          <QwikLogo />
-        </a>
-      </div>
-      <ul>
-        <li>
-          <a href="https://qwik.builder.io/docs/components/overview/" target="_blank">
-            Docs
-          </a>
-        </li>
-        <li>
-          <a href="https://qwik.builder.io/examples/introduction/hello-world/" target="_blank">
-            Examples
-          </a>
-        </li>
-        <li>
-          <a href="https://qwik.builder.io/tutorial/welcome/overview/" target="_blank">
-            Tutorials
-          </a>
-        </li>
-      </ul>
+    <header class="navbar-wrapper">
+      {/* <div>@livewire('special-offer') @livewire('search-box')</div> */}
+
+      <nav>
+        <ul>
+          <li>
+            <a href="{{ route('welcome') }}">Home</a>
+          </li>
+          <li>
+            <a href="{{ route('collections.categories') }}">Categories</a>
+          </li>
+          <li>
+            <a href="{{ route('collections.featured') }}">Featured</a>
+          </li>
+          <li>
+            <a href="{{ route('about') }}">About Us</a>
+          </li>
+        </ul>
+
+        <ul>
+          <span class="cart-icon mx-6 cursor-pointer">
+            Cart<i class="ti-bag h-6 ml-1"></i>
+          </span>
+          {/* @if (Route::has('login')) */}
+          <div class="space-x-4 self-end">
+            {/* @auth */}
+            <a class="font-bold" href="{{ route('dashboard') }}">
+              Username
+            </a>
+            <a
+              href="{{ route('logout') }}"
+              class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
+            >
+              Log out
+            </a>
+
+            <form
+              id="logout-form"
+              action="{{ route('logout') }}"
+              method="POST"
+              style="display: none;"
+            >
+              {/* @csrf */}
+            </form>
+            {/* @else */}
+            <a
+              href="{{ route('login') }}"
+              class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
+            >
+              Log in
+            </a>
+
+            {/* @if (Route::has('register')) */}
+            <a
+              href="{{ route('register') }}"
+              class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
+            >
+              Register
+            </a>
+            {/* @endif
+        @endauth */}
+          </div>
+          {/* @endif */}
+        </ul>
+      </nav>
+
+      {/* <div>// @livewire('shopping-cart')</div> */}
     </header>
   );
 });
