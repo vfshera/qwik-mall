@@ -9,7 +9,7 @@ export const head: DocumentHead = {
   title: "Home",
   meta: [
     {
-      name: "Commerce IT Mall",
+      name: "description",
       content: "Your Shopping Destination!",
     },
   ],

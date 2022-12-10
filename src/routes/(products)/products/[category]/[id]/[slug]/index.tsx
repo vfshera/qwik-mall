@@ -9,13 +9,15 @@ import { slugify } from "~/components/utils/utils";
 import { products } from "~/data/proucts";
 
 //GET REQUEST
-export const onGet: RequestHandler<Product> = async ({ params, response }) => {
+export const onGet: RequestHandler<Product | null> = async ({
+  params,
+  response,
+}) => {
   const [product] = products.filter((p) => p.id === +params.id);
 
   if (product === null || params.slug !== slugify(product.title)) {
-    throw response.redirect("/", 404);
-    // response.status = 404;
-    // return null;
+    response.status = 404;
+    return null;
   } else {
     return product;
   }
@@ -26,7 +28,7 @@ export const head: DocumentHead<Product> = ({ data }) => ({
   title: data.title,
   meta: [
     {
-      name: data.title,
+      name: "description",
       content: data.description,
     },
   ],
@@ -34,7 +36,7 @@ export const head: DocumentHead<Product> = ({ data }) => ({
 
 export default component$(() => {
   //CONSUMES FROM GET REQUEST
-  const resource = useEndpoint<Product>();
+  const resource = useEndpoint<typeof onGet>();
 
   return (
     <Resource
