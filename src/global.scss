@@ -37,7 +37,7 @@ body {
 // GLOBALS
 
 .scecomm-container {
-  padding: $generalPadding;
+  @apply px-5 md:px-8 lg:px-12;
 }
 
 .title-action {
@@ -117,7 +117,6 @@ header.breadcrumbs {
 // NAVBAR
 .navbar-wrapper {
   header {
-    // background-color: $themeBlue;
     @apply bg-brand-1;
 
     .reach-us {
@@ -248,14 +247,6 @@ header.breadcrumbs {
         font-size: 16px;
       }
     }
-  }
-}
-
-section.products-view {
-  @apply mt-16;
-
-  .product-list {
-    @apply w-full rounded-md grid grid-cols-4 gap-5 mt-5;
   }
 }
 
