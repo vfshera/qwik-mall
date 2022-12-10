@@ -117,7 +117,7 @@ header.breadcrumbs {
 // NAVBAR
 .navbar-wrapper {
   header {
-    @apply bg-brand-1;
+    @apply bg-gradient-to-bl from-brand-2  via-brand-1 to-brand-1;
 
     .reach-us {
       @apply flex justify-between items-center;
