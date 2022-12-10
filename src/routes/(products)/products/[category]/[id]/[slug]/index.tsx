@@ -4,14 +4,21 @@ import {
   RequestHandler,
   useEndpoint,
 } from "@builder.io/qwik-city";
+import NoProduct from "~/components/NoProduct";
 import { slugify } from "~/components/utils/utils";
 import { products } from "~/data/proucts";
 
 //GET REQUEST
-export const onGet: RequestHandler<Product> = ({ params }) => {
+export const onGet: RequestHandler<Product> = async ({ params, response }) => {
   const [product] = products.filter((p) => p.id === +params.id);
 
-  return product;
+  if (product === null || params.slug !== slugify(product.title)) {
+    throw response.redirect("/", 404);
+    // response.status = 404;
+    // return null;
+  } else {
+    return product;
+  }
 };
 
 //DYNAMIC HEAD
@@ -27,11 +34,12 @@ export const head: DocumentHead<Product> = ({ data }) => ({
 
 export default component$(() => {
   //CONSUMES FROM GET REQUEST
-  const productData = useEndpoint<Product>();
+  const resource = useEndpoint<Product>();
 
   return (
     <Resource
-      value={productData}
+      value={resource}
+      onRejected={() => <NoProduct />}
       onResolved={(product) => (
         <section id="ProductPage" class="my-2">
           <div class="relative mx-auto max-w-screen-xl px-4 py-8">
