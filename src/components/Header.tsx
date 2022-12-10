@@ -1,4 +1,5 @@
 import { $, component$, useSignal } from "@builder.io/qwik";
+import { useGlobalState } from "~/GlobalState";
 import Cart from "./Cart";
 import SearchBox from "./SearchBox";
 import SpecialOffer from "./SpecialOffer";
@@ -9,6 +10,9 @@ export default component$(() => {
   const close$ = $(() => {
     showCart.value = false;
   });
+
+  const { cart } = useGlobalState();
+
   return (
     <div class="navbar-wrapper">
       <header>
@@ -37,7 +41,7 @@ export default component$(() => {
             onClick$={() => {
               showCart.value = !showCart.value;
             }}
-            class="cart-icon mx-6 cursor-pointer flex gap-1"
+            class="cart-icon mx-6 relative cursor-pointer flex gap-1"
           >
             Cart{" "}
             <svg

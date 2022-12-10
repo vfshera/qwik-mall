@@ -10,3 +10,11 @@ interface Product {
     count: number;
   };
 }
+
+interface ICartItem {
+  item: Product;
+  quantity: number;
+}
+interface GlobalState {
+  cart: ICartItem[];
+}

@@ -606,7 +606,7 @@ main.collections-wrapper {
 
             &:hover {
               span {
-                .cart-icon {
+                .cart-icon svg {
                   @apply ml-1 opacity-0 animate-cart;
                 }
               }

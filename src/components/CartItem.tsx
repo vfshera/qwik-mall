@@ -1,6 +1,10 @@
 import { component$ } from "@builder.io/qwik";
 
-export default component$(() => {
+interface Props {
+  cartItem: ICartItem;
+}
+
+export default component$(({ cartItem }: Props) => {
   return (
     <li class="flex flex-col py-6 sm:flex-row sm:justify-between">
       <div class="flex w-full space-x-2 sm:space-x-4">
