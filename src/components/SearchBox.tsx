@@ -1,5 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { SITE } from "~/data/config";
+import { categories } from "~/data/proucts";
+import { sentenseCase, slugify } from "./utils/utils";
 
 export default component$(() => {
   return (
@@ -11,9 +13,9 @@ export default component$(() => {
         <select name="" id="">
           <option value="">All Categories</option>
 
-          {/* @foreach($categories as $category) */}
-          <option value=" ">Category 1</option>
-          {/* @endforeach */}
+          {categories.map((category) => (
+            <option value={slugify(category)}>{sentenseCase(category)}</option>
+          ))}
         </select>
         <div>
           <div class="search-results hidden">

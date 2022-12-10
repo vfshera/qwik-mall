@@ -7,3 +7,9 @@ export const slugify = (value: string): string => {
     .replace(/[^a-z0-9 ]/g, "") // remove all chars not letters, numbers and spaces (to be replaced)
     .replace(/\s+/g, "-"); // separator
 };
+
+export const sentenseCase = (words: string): string => {
+  return words
+    .toLowerCase()
+    .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase());
+};

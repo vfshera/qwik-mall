@@ -8,11 +8,10 @@ import { SITE } from "~/data/config";
 export default component$(() => {
   const head = useDocumentHead();
   const loc = useLocation();
-
   return (
     <>
       <title>
-        {head.title} - {SITE.name}
+        {head.title === "" ? SITE.name : head.title + " - " + SITE.name}
       </title>
 
       <link rel="canonical" href={loc.href} />
