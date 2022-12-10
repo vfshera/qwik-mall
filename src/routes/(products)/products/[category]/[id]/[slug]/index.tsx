@@ -1,18 +1,38 @@
-import { component$ } from "@builder.io/qwik";
-import { useLocation } from "@builder.io/qwik-city";
-import NoProduct from "~/components/NoProduct";
+import { component$, Resource } from "@builder.io/qwik";
+import {
+  DocumentHead,
+  RequestHandler,
+  useEndpoint,
+} from "@builder.io/qwik-city";
 import { slugify } from "~/components/utils/utils";
 import { products } from "~/data/proucts";
 
-export default component$(() => {
-  const { params } = useLocation();
-
+//GET REQUEST
+export const onGet: RequestHandler<Product> = ({ params }) => {
   const [product] = products.filter((p) => p.id === +params.id);
 
+  return product;
+};
+
+//DYNAMIC HEAD
+export const head: DocumentHead<Product> = ({ data }) => ({
+  title: data.title,
+  meta: [
+    {
+      name: data.title,
+      content: data.description,
+    },
+  ],
+});
+
+export default component$(() => {
+  //CONSUMES FROM GET REQUEST
+  const productData = useEndpoint<Product>();
+
   return (
-    <>
-      {slugify(product.title) !== params.slug && <NoProduct />}
-      {slugify(product.title) === params.slug && (
+    <Resource
+      value={productData}
+      onResolved={(product) => (
         <section id="ProductPage" class="my-2">
           <div class="relative mx-auto max-w-screen-xl px-4 py-8">
             <div class="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
@@ -217,6 +237,6 @@ export default component$(() => {
           </div>
         </section>
       )}
-    </>
+    />
   );
 });
