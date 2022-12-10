@@ -3,7 +3,7 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 import Assurances from "~/components/Assurances";
 import ProductCard from "~/components/ProductCard";
 import Showcase from "~/components/Showcase";
-import { categories, products } from "~/data/proucts";
+import { products } from "~/data/proucts";
 
 export const head: DocumentHead = {
   title: "Home",
@@ -19,7 +19,7 @@ export default component$(() => {
     <main id="HomePage">
       <Showcase />
 
-      <section class="featured products-view scecomm-container">
+      <section id="Featured" class=" mt-16 scecomm-container">
         <div class="title-action">
           <h3>Featured Products</h3>
           <a href="{{ route('collections.featured') }}">
@@ -41,7 +41,7 @@ export default component$(() => {
           </a>
         </div>
 
-        <div class="product-list">
+        <div class="w-full rounded-md grid  grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-10 mt-5">
           {products.map((product, i) => (
             <ProductCard product={product} key={i} />
           ))}
