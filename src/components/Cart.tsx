@@ -7,11 +7,18 @@ interface CartProps {
 
 export default component$((props: CartProps) => {
   return (
-    <div class="fixed top-0 left-0 flex justify-center pt-10  bg-gray-900/30 w-full h-full z-50 ">
-      <div class="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 rounded drop-shadow bg-gray-50 text-gray-800">
+    <div class="fixed top-0 left-0 flex justify-end  bg-gradient-to-l to-gray-900/50 from-gray-900/90 w-full h-full z-50 ">
+      <div class="flex relative flex-col max-w-3xl p-6 space-y-4 sm:p-10 rounded drop-shadow bg-gray-50 text-gray-800">
         <h2 class="text-xl font-semibold">Your cart</h2>
-        <ul class="flex flex-col divide-y divide-gray-700">
-          {[...new Array(3).fill(undefined)].map((cartItem) => (
+
+        <button
+          class="absolute right-6 text-5xl p-1 cursor-pointer  -translate-y-1/2 top-6"
+          onClick$={props.onClose$}
+        >
+          &times;
+        </button>
+        <ul class="flex flex-col divide-y divide-gray-700 overflow-y-scroll">
+          {[...new Array(5).fill(undefined)].map((cartItem) => (
             <CartItem />
           ))}
         </ul>
@@ -24,22 +31,13 @@ export default component$((props: CartProps) => {
             Not including taxes and shipping costs
           </p>
         </div>
-        <div class="flex justify-end space-x-4">
-          <button
-            onClick$={props.onClose$}
-            type="button"
-            class="px-6 py-2 border rounded-md border-violet-400"
-          >
-            Back
-            <span class="sr-only sm:not-sr-only">to shop</span>
-          </button>
-          <button
-            type="button"
-            class="px-6 py-2 border rounded-md bg-violet-400 text-gray-900 border-violet-400"
-          >
-            <span class="sr-only sm:not-sr-only">Continue to</span>Checkout
-          </button>
-        </div>
+
+        <button
+          type="button"
+          class="px-6 py-2 border rounded-md bg-brand-1 text-white  "
+        >
+          <span class="sr-only sm:not-sr-only">Continue to</span>Checkout
+        </button>
       </div>
     </div>
   );
