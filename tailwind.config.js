@@ -6,8 +6,8 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          1: "#1E2D7D",
-          2: "#33C8E2",
+          1: "#1f83cf",
+          2: "#96ef87",
           3: "#f3f5f6",
           4: "#677279",
         },
@@ -32,6 +32,7 @@ module.exports = {
     },
 
     plugins: [
+      require("@tailwindcss/line-clamp"),
       require("@tailwindcss/forms"),
       require("@tailwindcss/typography"),
     ],
