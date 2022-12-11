@@ -1,6 +1,7 @@
 import { component$, PropFunction } from "@builder.io/qwik";
 import { useGlobalState } from "~/GlobalState";
 import CartItem from "./CartItem";
+import { getUSD } from "./utils/utils";
 
 interface CartProps {
   onClose$: PropFunction<() => void>;
@@ -10,9 +11,11 @@ export default component$((props: CartProps) => {
   const { cart } = useGlobalState();
   return (
     <div class="fixed top-0 left-0 flex justify-end  bg-gradient-to-l to-gray-900/50 from-gray-900/90 w-full h-full z-50 ">
-      <div class="flex relative flex-col max-w-3xl min-w-[25%] p-6 space-y-4 sm:p-10  drop-shadow bg-gray-50 text-gray-800">
+      <div class="flex relative flex-col max-w-2xl h-full min-w-[25%] p-6 space-y-4 sm:p-10  drop-shadow bg-gray-50 text-gray-800">
         {cart.length > 0 && (
-          <h2 class="text-xl font-semibold">Your cart {cart.length}</h2>
+          <h2 class="text-xl font-semibold">
+            Items in your cart : {cart.length}
+          </h2>
         )}
 
         <button
@@ -21,17 +24,25 @@ export default component$((props: CartProps) => {
         >
           &times;
         </button>
-        <ul class="flex flex-col divide-y divide-gray-700 overflow-y-scroll">
+
+        <ul class="flex flex-col divide-y divide-gray-700 flex-1 overflow-y-scroll">
           {cart.map((cartItem) => (
             <CartItem cartItem={cartItem} />
           ))}
         </ul>
+
         {cart.length > 0 ? (
           <>
-            <div class="space-y-1 text-right">
+            <div class="py-1 text-right mt-auto">
               <p>
                 Total amount:
-                <span class="font-semibold">357 €</span>
+                <span class="font-semibold">
+                  {getUSD(
+                    cart
+                      .map((i) => i.item.price)
+                      .reduce((prev, curr) => prev + curr, 0)
+                  )}
+                </span>
               </p>
               <p class="text-sm text-gray-400">
                 Not including taxes and shipping costs

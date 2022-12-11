@@ -13,3 +13,10 @@ export const sentenseCase = (words: string): string => {
     .toLowerCase()
     .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase());
 };
+
+export const getUSD = (num: number): string => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(num);
+};
