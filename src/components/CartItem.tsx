@@ -1,13 +1,19 @@
 import { component$ } from "@builder.io/qwik";
+import { useGlobalState } from "~/GlobalState";
 import { getUSD, sentenseCase, slugify } from "./utils/utils";
 
 interface Props {
   cartItem: ICartItem;
 }
 
-export default component$(({ cartItem: { item, quantity } }: Props) => {
+export default component$(({ cartItem }: Props) => {
+  const { item, quantity } = cartItem;
+  const { cart } = useGlobalState();
   return (
-    <li class="flex flex-col py-6 sm:flex-row sm:justify-between">
+    <li
+      id={slugify(sentenseCase(item.title))}
+      class="flex flex-col py-6 sm:flex-row sm:justify-between"
+    >
       <div class="flex w-full space-x-2 sm:space-x-4">
         <img
           class="flex-shrink-0 object-cover w-20 h-20 border-transparent rounded outline-none sm:w-32 sm:h-32 bg-gray-500"
@@ -31,6 +37,11 @@ export default component$(({ cartItem: { item, quantity } }: Props) => {
           </div>
           <div class="flex text-sm divide-x">
             <button
+              onClick$={() => {
+                //  cart = cart.filter(ci => ci.item.id !== item.id);
+
+                cart.splice(cart.indexOf(cartItem));
+              }}
               type="button"
               class="flex items-center px-2 py-1 pl-0 space-x-1"
             >

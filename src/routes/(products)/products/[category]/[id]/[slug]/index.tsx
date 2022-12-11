@@ -65,7 +65,7 @@ export default component$(() => {
               </div>
 
               <div class="sticky top-0">
-                <strong class="rounded-full border border-blue-600 bg-gray-100 px-3 py-0.5 text-xs font-medium tracking-wide text-blue-600">
+                <strong class="rounded-full border border-brand-1 bg-gray-100 px-3 py-0.5 text-xs font-medium tracking-wide text-brand-1">
                   Pre Order
                 </strong>
 
