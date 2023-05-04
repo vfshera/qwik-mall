@@ -8,8 +8,9 @@ export default component$(() => {
       style="background: url('/images/hero.webp')"
     >
       <div class="flex flex-col justify-center items-center gap-5 h-full">
-        <h2 class="text-white text-5xl font-semibold">
-          Welcome to {SITE.name}
+        <h2 class="text-white text-2xl md:text-3xl  text-center font-semibold">
+          Welcome to <br />
+          <span class=" mt-0.5 block text-4xl   md:text-5xl">{SITE.name}</span>
         </h2>
       </div>
     </section>

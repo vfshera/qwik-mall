@@ -2,6 +2,7 @@ import { component$, useSignal } from "@builder.io/qwik";
 import Cart from "./Cart";
 import SearchBox from "./SearchBox";
 import SpecialOffer from "./SpecialOffer";
+import { Link } from "@builder.io/qwik-city";
 
 export default component$(() => {
   const showCart = useSignal(false);
@@ -13,30 +14,30 @@ export default component$(() => {
         <SearchBox />
       </header>
 
-      <nav>
-        <ul>
+      <nav class=" border-b border-brand-4/40 flex justify-between items-center bg-white  px-5 md:px-[50px] h-16  w-full">
+        <ul class="w-full flex items-center gap-3 md:gap-[30px] [&>li]:list-none [&_a]:text-sm md:[&_a]:text-base [&_span]:text-brand-4  [&_a]:text-brand-4  [&_span]:text-base">
           <li>
-            <a href="/">Home</a>
+            <Link href="/">Home</Link>
           </li>
-          <li>
-            <a href="/">Categories</a>
+          <li class="hidden md:block">
+            <Link href="/">Categories</Link>
           </li>
-          <li>
-            <a href="/">Featured</a>
+          <li class="hidden md:block">
+            <Link href="/">Featured</Link>
           </li>
-          <li>
-            <a href="/">About Us</a>
+          <li class="hidden md:block">
+            <Link href="/">About Us</Link>
           </li>
         </ul>
 
-        <ul>
+        <ul class="w-full flex items-center justify-end gap-3 md:gap-[30px] [&>li]:list-none [&_a]:text-sm md:[&_a]:text-base [&_span]:text-brand-4  [&_a]:text-brand-4  [&_span]:text-sm md:[&_span]:text-base">
           <button
             onClick$={() => {
               showCart.value = !showCart.value;
             }}
-            class="cart-icon mx-6 relative cursor-pointer flex gap-1"
+            class="cart-icon mx-6 text-sm md:text-base text-brand-4 relative cursor-pointer flex items-center gap-1"
           >
-            Cart{" "}
+            Cart
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -52,20 +53,20 @@ export default component$(() => {
               />
             </svg>
           </button>
-          <div class="space-x-4 self-end">
-            <a
+          <div class="space-x-4 self-end  [&_a]:text-sm md:[&_a]:text-base   [&_a]:text-brand-4  ">
+            <Link
               href="#"
-              class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
+              class="whitespace-nowrap font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
             >
               Log in
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="#"
               class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
             >
               Register
-            </a>
+            </Link>
           </div>
         </ul>
       </nav>

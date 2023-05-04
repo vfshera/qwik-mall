@@ -120,9 +120,9 @@ header.breadcrumbs {
     @apply bg-gradient-to-bl from-brand-2  via-brand-1 to-brand-1;
 
     .reach-us {
-      @apply flex justify-between items-center;
+      @apply flex justify-between items-center px-[50px];
 
-      padding: $generalPadding;
+      // padding: $generalPadding;
       height: $reachUsHeight;
       border-bottom: 1px rgba($themeWhite, 0.4) solid;
 
@@ -141,9 +141,9 @@ header.breadcrumbs {
     }
 
     .brand-name-search {
-      @apply flex justify-between items-center;
+      @apply flex flex-col md:flex-row justify-between items-center px-5 py-5 md:py-0 md:px-[50px];
 
-      padding: $generalPadding;
+      // padding: $generalPadding;
       min-height: $brandMinHeight;
       width: 100%;
 
@@ -153,14 +153,12 @@ header.breadcrumbs {
       }
 
       form {
-        @apply flex justify-between;
-        width: 85%;
-        height: 44px;
-        // overflow: hidden;
+        @apply flex justify-between w-full md:w-[85%] h-[44px];
+
         @apply bg-brand-3 rounded-md;
 
         input {
-          width: 79%;
+          @apply w-full md:w-3/4 lg:w-4/5;
           background-color: transparent;
           border: none;
           outline: none;
@@ -172,7 +170,7 @@ header.breadcrumbs {
         }
 
         select {
-          width: 15%;
+          @apply hidden md:block md:w-1/4 lg:w-[15%];
           background-color: transparent;
           border: none;
         }
@@ -212,39 +210,6 @@ header.breadcrumbs {
             }
           }
         }
-      }
-    }
-  }
-
-  nav {
-    @apply flex justify-between items-center bg-white;
-    height: 64px;
-    border-bottom: 1px rgba($themeDark, 0.4) solid;
-    padding: $generalPadding;
-    width: 100%;
-
-    ul {
-      display: flex;
-      padding: 0;
-      margin: 0;
-
-      li {
-        list-style: none;
-
-        a {
-          text-decoration: none;
-          color: $themeDark;
-          font-size: 16px;
-        }
-
-        &:not(:last-child) {
-          margin-right: 30px;
-        }
-      }
-
-      span {
-        color: $themeDark;
-        font-size: 16px;
       }
     }
   }

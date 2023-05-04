@@ -12,7 +12,7 @@ export default component$((props: CartProps) => {
 
   return (
     <div class="fixed top-0 left-0 flex justify-end  bg-gradient-to-l to-gray-900/50 from-gray-900/90 w-full h-full z-50 ">
-      <div class="flex relative flex-col max-w-2xl h-full min-w-[25%] p-6 space-y-4 sm:p-10  drop-shadow bg-gray-50 text-gray-800">
+      <div class="flex relative flex-col max-w-[95%] md:max-w-2xl h-full min-w-[75%] md:min-w-[25%] p-6 space-y-4 sm:p-10  drop-shadow bg-gray-50 text-gray-800">
         {cart.length > 0 && (
           <h2 class="text-xl font-semibold">
             Items in your cart : {cart.length}
