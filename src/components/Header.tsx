@@ -1,14 +1,10 @@
-import { $, component$, useSignal } from "@builder.io/qwik";
+import { component$, useSignal } from "@builder.io/qwik";
 import Cart from "./Cart";
 import SearchBox from "./SearchBox";
 import SpecialOffer from "./SpecialOffer";
 
 export default component$(() => {
   const showCart = useSignal(false);
-
-  const close = $(() => {
-    showCart.value = false;
-  });
 
   return (
     <div class="navbar-wrapper">
@@ -74,7 +70,13 @@ export default component$(() => {
         </ul>
       </nav>
 
-      {/* {showCart.value && <Cart onClose$={close} />} */}
+      {showCart.value && (
+        <Cart
+          onClose$={() => {
+            showCart.value = false;
+          }}
+        />
+      )}
     </div>
   );
 });
