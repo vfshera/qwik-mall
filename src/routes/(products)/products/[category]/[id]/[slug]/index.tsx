@@ -1,48 +1,41 @@
-import { component$, Resource } from "@builder.io/qwik";
-import {
-  DocumentHead,
-  RequestHandler,
-  useEndpoint,
-} from "@builder.io/qwik-city";
-import NoProduct from "~/components/NoProduct";
-import { slugify } from "~/components/utils/utils";
-import { products } from "~/data/proucts";
+import { component$ } from "@builder.io/qwik";
+import { DocumentHead, routeLoader$ } from "@builder.io/qwik-city";
+import NoProduct from "@/components/NoProduct";
+import { slugify } from "@/components/utils/utils";
+import { products } from "@/data/proucts";
 
 //GET REQUEST
-export const onGet: RequestHandler<Product | null> = async ({
-  params,
-  response,
-}) => {
+export const useProducts = routeLoader$(async ({ params, status }) => {
   const [product] = products.filter((p) => p.id === +params.id);
 
-  if (product === null || params.slug !== slugify(product.title)) {
-    response.status = 404;
-    return null;
-  } else {
-    return product;
+  if (!product) {
+    status(404);
   }
-};
+
+  return product;
+});
 
 //DYNAMIC HEAD
-export const head: DocumentHead<Product> = ({ data }) => ({
-  title: data.title,
-  meta: [
-    {
-      name: "description",
-      content: data.description,
-    },
-  ],
-});
+export const head: DocumentHead = ({ resolveValue }) => {
+  const product = resolveValue(useProducts);
+  return {
+    title: product.title,
+    meta: [
+      {
+        name: "description",
+        content: product.description,
+      },
+    ],
+  };
+};
 
 export default component$(() => {
   //CONSUMES FROM GET REQUEST
-  const resource = useEndpoint<typeof onGet>();
+  const { value: product } = useProducts();
 
   return (
-    <Resource
-      value={resource}
-      onRejected={() => <NoProduct />}
-      onResolved={(product) => (
+    <>
+      {product ? (
         <section id="ProductPage" class="my-2">
           <div class="relative mx-auto max-w-screen-xl px-4 py-8">
             <div class="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
@@ -246,7 +239,9 @@ export default component$(() => {
             </div>
           </div>
         </section>
+      ) : (
+        <NoProduct />
       )}
-    />
+    </>
   );
 });
