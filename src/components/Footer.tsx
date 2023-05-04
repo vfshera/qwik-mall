@@ -38,13 +38,15 @@ export default component$(() => {
                 Payment Methods
               </h4>
               <ul>
-                {["MPESA", "VISA", "Mastar Card", "Paypal"].map((cat) => (
-                  <li>
-                    <p class="text-brand-4 capitalize hover:text-brand-1 mb-2 inline-block text-base leading-loose">
-                      {cat}
-                    </p>
-                  </li>
-                ))}
+                {["MPESA", "VISA", "Mastar Card", "Paypal"].map(
+                  (cat, index) => (
+                    <li key={index}>
+                      <p class="text-brand-4 capitalize hover:text-brand-1 mb-2 inline-block text-base leading-loose">
+                        {cat}
+                      </p>
+                    </li>
+                  )
+                )}
               </ul>
             </div>
           </div>
@@ -54,8 +56,8 @@ export default component$(() => {
                 Categories
               </h4>
               <ul>
-                {categories.map((cat) => (
-                  <li>
+                {categories.map((cat, index) => (
+                  <li key={index}>
                     <a
                       href={slugify(cat)}
                       class="text-brand-4 capitalize hover:text-brand-1 mb-2 inline-block text-base leading-loose"
@@ -77,8 +79,8 @@ export default component$(() => {
                   "Privacy Policy",
                   "Terms & Conditions",
                   "Download Our App",
-                ].map((cat) => (
-                  <li>
+                ].map((cat, index) => (
+                  <li key={index}>
                     <a
                       href={slugify(cat)}
                       class="text-brand-4 capitalize hover:text-brand-1 mb-2 inline-block text-base leading-loose"

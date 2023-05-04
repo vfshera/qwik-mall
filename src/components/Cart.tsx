@@ -1,4 +1,4 @@
-import { component$, PropFunction } from "@builder.io/qwik";
+import { component$, type PropFunction } from "@builder.io/qwik";
 import { useGlobalState } from "@/GlobalState";
 import CartItem from "./CartItem";
 import { getUSD } from "./utils/utils";
@@ -27,8 +27,8 @@ export default component$((props: CartProps) => {
         </button>
 
         <ul class="flex flex-col divide-y divide-gray-700 flex-1 overflow-y-scroll">
-          {cart.map((cartItem) => (
-            <CartItem cartItem={cartItem} />
+          {cart.map((cartItem, index) => (
+            <CartItem key={index} cartItem={cartItem} />
           ))}
         </ul>
 

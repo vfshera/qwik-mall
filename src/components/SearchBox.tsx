@@ -13,8 +13,10 @@ export default component$(() => {
         <select name="" id="">
           <option value="">All Categories</option>
 
-          {categories.map((category) => (
-            <option value={slugify(category)}>{sentenseCase(category)}</option>
+          {categories.map((category, index) => (
+            <option key={index} value={slugify(category)}>
+              {sentenseCase(category)}
+            </option>
           ))}
         </select>
         <div>
