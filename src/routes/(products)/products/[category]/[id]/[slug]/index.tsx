@@ -47,7 +47,7 @@ export default component$(() => {
                 />
 
                 <div class="grid grid-cols-2 gap-4 lg:mt-4">
-                  {[...new Array(4).fill(undefined)].map((x) => (
+                  {Array.from({ length: 4 }, () => 0).map((_) => (
                     <img
                       alt={slugify(product.title)}
                       src={product.image}
