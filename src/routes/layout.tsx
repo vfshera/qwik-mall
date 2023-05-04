@@ -4,9 +4,9 @@ import {
   useContextProvider,
   useStore,
 } from "@builder.io/qwik";
-import Footer from "~/components/Footer";
-import Header from "~/components/Header";
-import { GlobalContext } from "~/GlobalState";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import { GlobalContext } from "@/GlobalState";
 
 export default component$(() => {
   const initialState = useStore<IGlobalState>({

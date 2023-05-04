@@ -1,6 +1,6 @@
 import { component$ } from "@builder.io/qwik";
-import { SITE } from "~/data/config";
-import { categories } from "~/data/proucts";
+import { SITE } from "@/data/config";
+import { categories } from "@/data/proucts";
 import { sentenseCase, slugify } from "./utils/utils";
 
 export default component$(() => {

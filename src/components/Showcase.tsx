@@ -1,5 +1,5 @@
 import { component$ } from "@builder.io/qwik";
-import { SITE } from "~/data/config";
+import { SITE } from "@/data/config";
 
 export default component$(() => {
   return (

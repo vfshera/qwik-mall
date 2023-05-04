@@ -1,5 +1,5 @@
 import { component$ } from "@builder.io/qwik";
-import { useGlobalState } from "~/GlobalState";
+import { useGlobalState } from "@/GlobalState";
 import { slugify } from "./utils/utils";
 
 interface Props {

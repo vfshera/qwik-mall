@@ -1,6 +1,6 @@
 import { component$ } from "@builder.io/qwik";
-import { SITE } from "~/data/config";
-import { categories } from "~/data/proucts";
+import { SITE } from "@/data/config";
+import { categories } from "@/data/proucts";
 import { slugify } from "./utils/utils";
 
 export default component$(() => {
@@ -149,7 +149,7 @@ export default component$(() => {
                   </svg>
                 </a>
               </div>
-              <p class="text-brand-4 text-base">&copy; 2025 TailGrids</p>
+              <p class="text-brand-4 text-base">&copy; 2025 QwikMall</p>
             </div>
           </div>
         </div>

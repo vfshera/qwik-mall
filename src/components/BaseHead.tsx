@@ -1,6 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { useDocumentHead, useLocation } from "@builder.io/qwik-city";
-import { SITE } from "~/data/config";
+import { SITE } from "@/data/config";
 
 /**
  * The BaseHead component is placed inside of the document `<head>` element.

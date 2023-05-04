@@ -1,9 +1,9 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
-import Assurances from "~/components/Assurances";
-import ProductCard from "~/components/ProductCard";
-import Showcase from "~/components/Showcase";
-import { products } from "~/data/proucts";
+import Assurances from "@/components/Assurances";
+import ProductCard from "@/components/ProductCard";
+import Showcase from "@/components/Showcase";
+import { products } from "@/data/proucts";
 
 export const head: DocumentHead = {
   title: "Home",

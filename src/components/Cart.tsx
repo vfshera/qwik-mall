@@ -1,5 +1,5 @@
 import { component$, PropFunction } from "@builder.io/qwik";
-import { useGlobalState } from "~/GlobalState";
+import { useGlobalState } from "@/GlobalState";
 import CartItem from "./CartItem";
 import { getUSD } from "./utils/utils";
 
