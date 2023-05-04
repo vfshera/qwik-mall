@@ -1,4 +1,4 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useComputed$ } from "@builder.io/qwik";
 import { useGlobalState } from "@/GlobalState";
 import { slugify } from "./utils/utils";
 
@@ -8,6 +8,12 @@ interface Props {
 export default component$(({ product }: Props) => {
   const { cart } = useGlobalState();
 
+  const productLink = useComputed$(
+    () =>
+      `/products/${slugify(product.category)}/${product.id}/${slugify(
+        product.title
+      )}`
+  );
   return (
     <div class="relative flex flex-col rounded-md shadow-sm  overflow-hidden group">
       <button class="absolute right-4 top-4 z-10 rounded-full bg-white hover:bg-pink-500 p-1.5 text-gray-900  hover:text-white transition-colors">
@@ -40,11 +46,7 @@ export default component$(({ product }: Props) => {
           New
         </span>
 
-        <a
-          href={`/products/${slugify(product.category)}/${product.id}/${slugify(
-            product.title
-          )}`}
-        >
+        <a href={productLink.value}>
           <p class="mt-4 text-sm md:text-lg font-medium text-gray-900 line-clamp-1">
             {product.title}
           </p>
