@@ -1,10 +1,10 @@
 import { component$ } from "@builder.io/qwik";
-import { DocumentHead, routeLoader$ } from "@builder.io/qwik-city";
+import { type DocumentHead, routeLoader$ } from "@builder.io/qwik-city";
 import NoProduct from "@/components/NoProduct";
 import { slugify } from "@/components/utils/utils";
 import { products } from "@/data/proucts";
+import { useGlobalState } from "@/GlobalState";
 
-//GET REQUEST
 export const useProducts = routeLoader$(async ({ params, status }) => {
   const [product] = products.filter((p) => p.id === +params.id);
 
@@ -15,7 +15,6 @@ export const useProducts = routeLoader$(async ({ params, status }) => {
   return product;
 });
 
-//DYNAMIC HEAD
 export const head: DocumentHead = ({ resolveValue }) => {
   const product = resolveValue(useProducts);
   return {
@@ -30,7 +29,7 @@ export const head: DocumentHead = ({ resolveValue }) => {
 };
 
 export default component$(() => {
-  //CONSUMES FROM GET REQUEST
+  const { cart } = useGlobalState();
   const { value: product } = useProducts();
 
   return (
@@ -228,8 +227,11 @@ export default component$(() => {
                     </div>
 
                     <button
-                      type="submit"
-                      class="ml-3 block rounded bg-brand-2 px-5 py-3 text-xs font-medium text-gray-700 font-semibold  "
+                      type="button"
+                      onClick$={() => {
+                        cart.push({ item: product, quantity: 1 });
+                      }}
+                      class="ml-3 block rounded bg-brand-2 px-5 py-3 text-xs   text-gray-700 font-semibold  "
                     >
                       Add to Cart
                     </button>
